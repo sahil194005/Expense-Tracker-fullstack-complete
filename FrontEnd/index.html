@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Log In Form</title>
+		<link rel="stylesheet" href="index.css" />
+	</head>
+
+	<body>
+		<div class="wrapper login">
+			<div class="container">
+				<div class="col-left">
+					<div class="login-text">
+						<h2>Welcome!</h2>
+						<p>Create your account.<br />For Free!</p>
+						<a href="./signup/signup.html" class="btn">Sign Up</a>
+					</div>
+				</div>
+				<div class="col-right">
+					<div class="login-form">
+						<h2>Login</h2>
+
+						<form action="submit" id="loginForm">
+							<p>
+								<label for="emailInput">Username/Email address<span>*</span></label>
+								<input type="email" name="user_email" id="emailInput" placeholder="Username or Email" required />
+							</p>
+							<p>
+								<label for="passwordInput">Password<span>*</span></label>
+								<input type="password" name="user_password" id="passwordInput" placeholder="Password" required />
+							</p>
+
+							<button>Login</button>
+							<p><a href="./forgotPassword/forgot.html" id="forgotPasswordBtn">Forgot password?</a></p>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="index.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	</body>
+</html>
+ 

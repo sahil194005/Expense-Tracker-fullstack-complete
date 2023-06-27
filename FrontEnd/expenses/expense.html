@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="expense.css" />
+		<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	</head>
+	<body>
+		<h1>Add Expenses</h1>
+		<form id="formId" method="post" target="submit">
+			<label for="expense">choose expense amount</label>
+			<input type="number" id="expense" placeholder="amount" required />
+
+			<label for="description">Choose description</label>
+			<input type="text" id="description" required placeholder="write something" />
+
+			<label for="category">Choose a category</label>
+			<select id="category" required>
+				<option value="movie">Movie</option>
+				<option value="fuel">Fuel</option>
+				<option value="food">Food</option>
+			</select>
+
+			<button id="addExpense">Add Expense</button>
+		</form>
+		<label id = 'yyy' > expenses per page</label>
+		<div id="ExpensePerPage">
+			<br>
+			<select   >
+				<option value='2'>2</option>
+				<option value='4'>4</option>
+				<option value='6'>6</option>
+				<option value='8'>8</option>
+				<option value='10'>10</option>
+			</select>
+			<button>submit</button>
+		</div>
+		<div id="ispremium"></div>
+		<div id="expenses"></div>
+		<div id="paginationButton"></div>
+		<div id="leader"></div>
+		<br>
+		<div id="downloadBtn"></div>
+		<button id="rzp-button">Buy Premium</button>
+		<div id="fileurllist"></div>
+
+		<script src="expense.js"></script>
+	</body>
+</html>
