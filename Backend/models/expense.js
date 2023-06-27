@@ -8,7 +8,7 @@ const expenseUser = sequelize.define('expenses', {
 		unique: true,
 	},
 	amount: {
-		type: DataTypes.INTEGER,
+		type: DataTypes.INTEGER, 
 	},
 	description: {
 		type: DataTypes.STRING,
