@@ -15,7 +15,7 @@ async function formsubmit(e) {
 		};
 		console.log(loginobj);
 
-		let res = await axios.post("http://localhost:3000/user/login", loginobj);
+		let res = await axios.post("http://54.167.82.133:3000/user/login", loginobj);
 		if (res.status == 200) {
 			console.log(res.data.token);
 			localStorage.setItem("token", res.data.token);

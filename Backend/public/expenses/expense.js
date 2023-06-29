@@ -32,7 +32,7 @@ const getcurrPage = async function (currpage) {
 	try {
 		let noofexpperpage = localStorage.getItem("NoOfExpPerPage");
 		let token = localStorage.getItem("token");
-		const res = await axios.get(`http://localhost:3000/expense/pagination?currpage=${currpage}&expPerPage=${noofexpperpage}`, { headers: { Authorization: token } });
+		const res = await axios.get(`http://54.167.82.133:3000/expense/pagination?currpage=${currpage}&expPerPage=${noofexpperpage}`, { headers: { Authorization: token } });
 		generate_form(res.data.expenses);
 		let currPage = res.data.currPage
 		localStorage.setItem('currPageOnScreen',currPage)
@@ -86,7 +86,7 @@ async function paymentProcess(e) {
 	try {
 		const token = localStorage.getItem("token");
 
-		const response = await axios.get("http://localhost:3000/purchase/premiummembership", { headers: { Authorization: token } });
+		const response = await axios.get("http://54.167.82.133:3000/purchase/premiummembership", { headers: { Authorization: token } });
 		// console.log(response);
 
 		var options = {
@@ -95,7 +95,7 @@ async function paymentProcess(e) {
 
 			handler: async function (response) {
 				const res = await axios.post(
-					"http://localhost:3000/purchase/updatetransactionstatus/success",
+					"http://54.167.82.133:3000/purchase/updatetransactionstatus/success",
 					{
 						order_id: options.order_id,
 						payment_id: response.razorpay_payment_id,
@@ -131,7 +131,7 @@ async function paymentProcess(e) {
 			// console.log(error);
 
 			await axios.post(
-				"http://localhost:3000/purchase/updatetransactionstatus/failed",
+				"http://54.167.82.133:3000/purchase/updatetransactionstatus/failed",
 				{
 					order_id: response.error.metadata.order_id,
 					payment_id: response.error.metadata.payment_id,
@@ -169,7 +169,7 @@ errordiv.classList = "error";
 async function add_to_database(obj) {
 	try {
 		const token = localStorage.getItem("token");
-		await axios.post("http://localhost:3000/expense", obj, { headers: { Authorization: token } });
+		await axios.post("http://54.167.82.133:3000/expense", obj, { headers: { Authorization: token } });
 		getcurrPage(localStorage.getItem("currPageOnScreen"));
 	} catch (error) {
 		errordiv.createTextNode(error);
@@ -181,7 +181,7 @@ async function get_from_database() {
 	try {
 		const token = localStorage.getItem("token");
 
-		let arr = await axios.get("http://localhost:3000/expense", { headers: { Authorization: token } });
+		let arr = await axios.get("http://54.167.82.133:3000/expense", { headers: { Authorization: token } });
 		return arr.data;
 	} catch (error) {
 		console.log(error);
@@ -200,7 +200,7 @@ async function showleaderboard() {
 
 		let unorderedList = document.createElement("ul");
 		let token = localStorage.getItem("token");
-		let newarr = await axios.get("http://localhost:3000/premium/leaderboard", { headers: { Authorization: token } });
+		let newarr = await axios.get("http://54.167.82.133:3000/premium/leaderboard", { headers: { Authorization: token } });
 		let arr = newarr.data;
 
 		for (let i = 0; i < arr.length; i++) {
@@ -320,7 +320,7 @@ async function delete_data(e) {
 async function delete_from_database(id) {
 	try {
 		let token = localStorage.getItem("token");
-		await axios.delete(`http://localhost:3000/expense/${id}`, { headers: { Authorization: token } });
+		await axios.delete(`http://54.167.82.133:3000/expense/${id}`, { headers: { Authorization: token } });
 		getcurrPage(1);
 	} catch (error) {
 		console.log(error);
@@ -339,7 +339,7 @@ async function delete_from_database(id) {
 async function download() {
 	try {
 		let token = localStorage.getItem("token");
-		let res = await axios.get("http://localhost:3000/expense/download", { headers: { Authorization: token } });
+		let res = await axios.get("http://54.167.82.133:3000/expense/download", { headers: { Authorization: token } });
 
 		if (res.status === 200) {
 			var a = document.createElement("a");
@@ -359,7 +359,7 @@ async function download() {
 async function show_fileURL_list() {
 	try {
 		let token = localStorage.getItem("token");
-		let lis = await axios.get("http://localhost:3000/expense/allfiles", { headers: { Authorization: token } });
+		let lis = await axios.get("http://54.167.82.133:3000/expense/allfiles", { headers: { Authorization: token } });
 		let arr = lis.data;
 		let ul = document.createElement("ul");
 		let h = document.createElement("h3");

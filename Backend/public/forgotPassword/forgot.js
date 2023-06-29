@@ -6,7 +6,7 @@ async function forgot(e) {
 	e.preventDefault();
     try {
         let email = document.querySelector("#emailId").value;
-   let res =  await axios.post('http://localhost:3000/password/forgotpassword',{email});
+   let res =  await axios.post('http://54.167.82.133:3000/password/forgotpassword',{email});
    let successmessg = document.createElement("div");
 		successmessg.classList = "success";
 		successmessg.appendChild(document.createTextNode(res.data.message));
