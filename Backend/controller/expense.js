@@ -90,6 +90,7 @@ async function uploadToS3(data, filename) {
 	return new Promise((resolve, reject) => {
 		s3bucket.upload(params, (err, s3response) => {
 			if (err) {
+				
 				console.log("something went wrong ", err);
 				reject(err);
 			} else {
@@ -113,6 +114,7 @@ async function downloadexpense(req, res, next) {
 		fileurl.create(obj);
 		res.status(200).json({ fileURL, success: true });
 	} catch (error) {
+		
 		console.log(error);
 		res.status(500).json({ message: "failed to download expenses", success: false });
 	}

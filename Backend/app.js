@@ -22,13 +22,7 @@ const helmet = require('helmet');
 
 
 
-const accessLogStream = fs.createWriteStream(
-	path.join(__dirname,'access.log'),
-	{flags:'a'}
-);
 
-
-// app.use(morgan('combined',{stream:accessLogStream}));
 //production
 app.use(helmet())
 app.use(cors());
@@ -45,6 +39,12 @@ app.use('/expense',expenseRoute)
 app.use('/purchase',paymentRoute) 
 app.use('/premium',permiumRoute)
 app.use('/password',passwordroute)
+
+
+app.use((req,res)=>{
+	
+	res.sendFile(path.join(__dirname,`public/${req.url}`))
+})
  
 User.hasMany(expenseUser);
 expenseUser.belongsTo(User);
