@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 const signup = async (req, res, next) => {
 	try {
 		const { email } = req.body;
-		let obj = await User.findOne({ where: { email: email } });
+		let obj = await User.findOne( { email: email  });
 		if (obj) {
 			res.status(409).json({ message: "email already exits", success: false });
 		} else {
@@ -30,7 +30,7 @@ function generateAccessToken(id, premium) {
 const login = async (req, res, next) => {
 	try {
 		const { email, password } = req.body;
-		let obj = await User.findOne({ where: { email: email } });
+		let obj = await User.findOne( { email: email  });
 		if (obj) {
 			let passwordMatch = await bcrypt.compare(password, obj.password);
 			if (passwordMatch) {

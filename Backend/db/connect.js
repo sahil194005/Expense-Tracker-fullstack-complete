@@ -1,6 +1,20 @@
-const { Sequelize } = require("sequelize");
-const mysql = require("mysql2");
+const mongoose = require("mongoose");
 
-const sequelize = new Sequelize(process.env.SQL_DATABASE, process.env.SQL_USERNAME, process.env.SQL_PASSWORD, { dialect: "mysql", host: process.env.DB_HOST, logging: false });
+const connectDB = async () => {
+	try {
+		const conn = await mongoose.connect(
+			`mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_CLUSTER}.mongodb.net/${process.env.MONGO_DB_NAME}?retryWrites=true&w=majority`,
+			{
+				useNewUrlParser: true, // It is used to parse and interpret the MongoDB connection string in a way that is compatible with the MongoDB Node.js driver's updated URL parser.
+				// useCreateIndex: true, //avoid use ensureIndex which is depreciated in nodejs
+				// useFindAndModify: false,
+				// useUnifiedTopology: true, //avoid depreciation warnings
+			}
+		);
+		console.log(`MongoDB Connected`);
+	} catch (error) {
+		console.error(error);
+	}
+};
 
-module.exports = sequelize;
+module.exports = connectDB;

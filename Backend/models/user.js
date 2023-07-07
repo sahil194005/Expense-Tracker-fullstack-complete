@@ -1,30 +1,24 @@
-const sequelize = require("../db/connect");
-const { Sequelize, DataTypes } = require("sequelize");
-
-const User = sequelize.define("users", {
-	id: {
-		autoIncrement: true,
-		unique: true,
-		allowNull: false,
-		type: DataTypes.INTEGER,
-		primaryKey: true,
-	},
+const mongoose = require("mongoose");
+const User = new mongoose.Schema({
 	name: {
-		type: DataTypes.STRING,
+		type: String,
 	},
 	email: {
-		type: DataTypes.STRING,
-		allowNull:false,
-		unique:true,
+		type: String,
+	required:true,
+		unique: true,
 	},
 	password: {
-		type: DataTypes.STRING,
+		type: String,
 	},
-	ispremiumuser:DataTypes.BOOLEAN,
-	total_cost:{
-		type:DataTypes.INTEGER,
-		defaultValue:0
-	}
+	ispremiumuser: {
+		type: Boolean,
+		default:false,
+	},
+	total_cost: {
+		type: Number,
+		default: 0,
+	},
 });
 
-module.exports = User;
+module.exports = mongoose.model("User", User);

@@ -1,16 +1,12 @@
-const sequelize = require("../db/connect");
-const { Sequelize, DataTypes } = require("sequelize");
+const mongoose = require("mongoose");
 
-const fileurl = sequelize.define(`fileurl`, {
-	id: {
-		unique: true,
-		primaryKey: true,
-		autoIncrement: true,
-		type: DataTypes.INTEGER,
-	},
+const fileurl = new mongoose.Schema({
 	fileURL: {
-		type: DataTypes.STRING,
+		type: String,
+	},
+	userId: {
+		type: mongoose.Schema.Types.ObjectId,
 	},
 });
 
-module.exports = fileurl;
+module.exports = mongoose.model('fileurls',fileurl);

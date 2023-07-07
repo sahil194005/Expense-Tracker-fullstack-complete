@@ -6,7 +6,7 @@ async function forgot(e) {
 	e.preventDefault();
     try {
         let email = document.querySelector("#emailId").value;
-   let res =  await axios.post('http://54.167.82.133:3000/password/forgotpassword',{email});
+   let res =  await axios.post('http://localhost:3001/password/forgotpassword',{email});
    let successmessg = document.createElement("div");
 		successmessg.classList = "success";
 		successmessg.appendChild(document.createTextNode(res.data.message));
@@ -21,7 +21,7 @@ async function forgot(e) {
         let networkErr = document.createElement("div");
 		networkErr.classList = "error";
 		networkErr.appendChild(document.createTextNode(error.response.data.message));
-		setTimeout(() => networkErr.remove(), 3000);
+		setTimeout(() => networkErr.remove(), 3001);
 		document.body.appendChild(networkErr);
     }
 

@@ -4,10 +4,9 @@ const sequelize = require("../db/connect");
 
 const leaderboard = async function (req, res, next) {
 	try {
-		let newleaderboard =await  User.findAll({
-			attributes:['name','total_cost'],
-			order:[['total_cost','DESC']]
-		})
+		let newleaderboard =await  User.find({})
+			.select('name total_cost')
+			.sort({'total_cost':-1});
 		
 		res.json(newleaderboard);
 	} catch (error) {

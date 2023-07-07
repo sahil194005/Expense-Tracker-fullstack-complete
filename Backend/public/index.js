@@ -15,7 +15,7 @@ async function formsubmit(e) {
 		};
 		console.log(loginobj);
 
-		let res = await axios.post("http://54.167.82.133:3000/user/login", loginobj);
+		let res = await axios.post("http://localhost:3001/user/login", loginobj);
 		if (res.status == 200) {
 			console.log(res.data.token);
 			localStorage.setItem("token", res.data.token);
@@ -24,11 +24,11 @@ async function formsubmit(e) {
 	} catch (error) {
 		console.log(error);
 		let errorDiv = document.querySelector("#errordiv");
-		errorDiv.classList = "error";
+		// errorDiv.classList = "error";
 		errorDiv.textContent = error.message;
 		document.body.appendChild(errorDiv);
 		setTimeout(() => {
 			errorDiv.remove();
-		}, 3000);
+		}, 3001);
 	}
 }
